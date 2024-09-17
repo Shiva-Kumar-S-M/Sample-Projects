@@ -48,12 +48,14 @@
               <ul class="answers-list">
                 <li>
                   <label for="q1-a1">
-                    <input type="radio" id="q1-a1" />
+                    <input type="radio" id="q1-a1" name="q1" value="true" />
+                    True
                   </label>
                 </li>
                 <li>
                   <label for="q1-a2">
-                    <input type="radio" id="q1-a2" />
+                    <input type="radio" id="q1-a2" name="q1" value="false" />
+                    False
                   </label>
                 </li>
               </ul>
@@ -69,12 +71,14 @@
               <ul class="answers-list">
                 <li>
                   <label for="q2-a1">
-                    <input type="radio" id="q2-a1" />
+                    <input type="radio" id="q2-a1" name="q2" value="true" />
+                    True
                   </label>
                 </li>
                 <li>
                   <label for="q2-a2">
-                    <input type="radio" id="q2-a2" />
+                    <input type="radio" id="q2-a2" name="q2" value="false" />
+                    False
                   </label>
                 </li>
               </ul>
@@ -83,6 +87,24 @@
         </section>
         <section role="region" aria-labelledby="css-questions">
           <h2 id="css-questions">CSS</h2>
+          <div class="formrow">
+            <div class="question-block">
+              <label for="selector">Can the CSS margin property accept negative values?</label>
+            </div>
+            <div class="answer">
+              <select name="selector" id="selector" required>
+                <option value="">Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="question-block">
+              <label>Do you have any questions:</label>
+            </div>
+            <div class="answer">
+              <textarea rows="5" cols="24"></textarea>
+            </div>
+          </div>
         </section>
       </form>
     </main>
