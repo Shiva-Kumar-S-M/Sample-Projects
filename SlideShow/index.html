@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Slideshow</title>
+  <style>
+    /* Add some basic styling to our slideshow */
+    #slideshow {
+      width: 800px;
+      height: 600px;
+      margin: 40px auto;
+      position: relative;
+    }
+    #slideshow img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    #slideshow img.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="slideshow">
+    <!-- Add your images here -->
+    <img src="https://imgs.search.brave.com/JhQfKUqrGqQVMTVLo-VFfhBl_xhzlc_fIxO2QTux7ec/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9m/b3Jlc3QtbGFuZHNj/YXBlXzcxNzY3LTEy/Ny5qcGc_c2l6ZT02/MjYmZXh0PWpwZw" alt="Image 1">
+    <img src="https://imgs.search.brave.com/ir1e6aoa7xsggDzfun4V844BzdJ_6lA6lapvrqVLf_Y/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9t/aXN1cmluYS1zdW5z/ZXRfMTgxNjI0LTM0/NzkzLmpwZz9zaXpl/PTYyNiZleHQ9anBn" alt="Image 2">
+    <img src="https://imgs.search.brave.com/vn4OPgelysEZtYfpcf6tUSP5uPgkIicKEAAKrMmFIOA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA3LzY4LzI5LzUx/LzM2MF9GXzc2ODI5/NTE2MV81UDVrN1pB/UUVTVXAxcHpWTmQ4/STFzZ0I2Z2ZDaGJX/QS5qcGc" alt="Image 3">
+    <!-- Add more images as needed -->
+  </div>
+
+  <script>
+    // Get the slideshow element and images
+    const slideshow = document.getElementById('slideshow');
+    const images = slideshow.getElementsByTagName('img');
+
+    // Set the first image as active
+    images[0].classList.add('active');
+
+    // Create a function to transition to the next image
+    function nextImage() {
+      // Get the current active image
+      const currentImage = slideshow.querySelector('img.active');
+
+      // Remove the active class from the current image
+      currentImage.classList.remove('active');
+
+      // Get the next image
+      const nextImage = currentImage.nextElementSibling;
+
+      // If there is no next image, go back to the first image
+      if (!nextImage) {
+        images[0].classList.add('active');
+      } else {
+        nextImage.classList.add('active');
+      }
+    }
+
+    // Set an interval to transition to the next image every 3 seconds
+    setInterval(nextImage, 3000);
+  </script>
+</body>
+</html>
