@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Sentiment Analyzer</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        #result { margin-top: 20px; font-weight: bold; }
+        .positive { color: green; }
+        .negative { color: red; }
+        .neutral { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>How Positive is Your Text?</h1>
+    <p>Type a sentence (e.g., a product review) below:</p>
+
+    <input type="text" id="textInput" placeholder="e.g., I love this!">
+    <button onclick="predictSentiment()">Analyze Sentiment</button>
+
+    <div id="result"></div>
+
+    <script>
+        function predictSentiment() {
+            let text = document.getElementById('textInput').value;
+            let resultElement = document.getElementById('result');
+
+            // Simple check for empty input
+            if (!text) {
+                resultElement.innerHTML = "Please enter some text.";
+                return;
+            }
+
+            // Send the text to our Flask backend for prediction
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the result with color coding
+                resultElement.innerHTML = `Sentiment: <span class="${data.sentiment}">${data.sentiment}</span>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultElement.innerHTML = "An error occurred.";
+            });
+        }
+    </script>
+</body>
+</html>
